@@ -2,11 +2,13 @@ package com.cndatacom.qmhz.delegates;
 
 import android.graphics.RectF;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 
 import com.cndatacom.qmhz.R;
 import com.cndatacom.qmhz.bean.GoodsTypeBean;
@@ -15,6 +17,8 @@ import com.cndatacom.qmhz.network.retrofit.HttpManager;
 import com.cndatacom.qmhz.network.rxjava.BaseListResponse;
 import com.cndatacom.qmhz.network.rxjava.observable.ResultTransformer;
 import com.cndatacom.qmhz.network.rxjava.observer.BaseObserver;
+import com.cndatacom.qmhz.utils.LogUtils;
+import com.cndatacom.qmhz.utils.ToastUtil;
 import com.cndatacom.qmhz.view.MarqueeTextView;
 import com.open.androidtvwidget.bridge.EffectNoDrawBridge;
 import com.open.androidtvwidget.bridge.OpenEffectBridge;
@@ -26,9 +30,11 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * 描述: 描述一下类的作用
@@ -45,6 +51,8 @@ public class MainDelegate extends PlaneDelegate {
 
     @BindView(R.id.tvMarqueeOne)
     MarqueeTextView tvMarqueeOne;
+    @BindView(R.id.gridview_lay)
+    FrameLayout gridviewLay;
 
     private HashMap<String, Object> loginMap = new HashMap<>();
 
@@ -145,6 +153,21 @@ public class MainDelegate extends PlaneDelegate {
 
     public float getDimension(int id) {
         return getResources().getDimension(id);
+    }
+
+
+    @OnClick(R.id.gridview_lay)
+    public void onViewClicked() {
+        start(LaucherDelegate.newInstance(), SupportFragment.SINGLETOP);
+    }
+
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case 8:
+            case 9:
+        }
+        return false;
     }
 
 }

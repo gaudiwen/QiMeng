@@ -1,0 +1,16 @@
+<!-- clipChildren clipToPadding 不要忘记了，不然移动的边框无法显示出来 --><!-- 不要模仿我使用 margin来定位item，我只是测试适配-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content11"
+    android:background="@color/color_chocolate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="880dp"
+        android:layout_height="500dp"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>
