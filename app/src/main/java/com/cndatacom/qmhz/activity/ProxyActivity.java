@@ -50,12 +50,12 @@ public abstract class ProxyActivity extends SupportActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if(getTopFragment() instanceof MainDelegate){
-            ToastUtil.getInstance().showNewShort("MainDelegate");
+            //ToastUtil.getInstance().showNewShort("MainDelegate");
             ((MainDelegate) getTopFragment()).onKeyDown(keyCode,event);
             //return true;
         }
         if(getTopFragment() instanceof LaucherDelegate){
-            ToastUtil.getInstance().showNewShort("LaucherDelegate");
+            //ToastUtil.getInstance().showNewShort("LaucherDelegate");
             ((LaucherDelegate) getTopFragment()).onKeyDown(keyCode,event);
             //return true;
         }

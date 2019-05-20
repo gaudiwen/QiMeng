@@ -810,4 +810,5 @@
         <attr name="cursorMarginRight" format="dimension"></attr>
         <attr name="cursorMarginBottom" format="dimension"></attr>
     </declare-styleable>
+
 </resources>

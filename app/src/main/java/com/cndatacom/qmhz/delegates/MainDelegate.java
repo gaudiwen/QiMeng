@@ -1,5 +1,6 @@
 package com.cndatacom.qmhz.delegates;
 
+import android.content.Intent;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
 import com.cndatacom.qmhz.R;
+import com.cndatacom.qmhz.activity.LaucherActivity;
 import com.cndatacom.qmhz.bean.GoodsTypeBean;
 import com.cndatacom.qmhz.bean.LoginBean;
 import com.cndatacom.qmhz.network.retrofit.HttpManager;
@@ -158,7 +160,10 @@ public class MainDelegate extends PlaneDelegate {
 
     @OnClick(R.id.gridview_lay)
     public void onViewClicked() {
-        start(LaucherDelegate.newInstance(), SupportFragment.SINGLETOP);
+        //start(LaucherDelegate2.newInstance(), SupportFragment.SINGLETOP);
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), LaucherActivity.class);
+        startActivity(intent);
     }
 
 

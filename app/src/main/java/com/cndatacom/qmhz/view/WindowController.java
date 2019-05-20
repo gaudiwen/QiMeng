@@ -29,7 +29,7 @@ public class WindowController implements View.OnTouchListener {
     private WindowManager windowManager;
     private WindowManager.LayoutParams layoutParams;
     private Context mContext;
-    private SmallWindowView sys_view;
+    private static SmallWindowView sys_view;
     private LayoutInflater inflater = null;
     private View layout = null;
     private VideoView mVideoView =null;
@@ -107,12 +107,19 @@ public class WindowController implements View.OnTouchListener {
       * @return
       */
     @SuppressLint("ClickableViewAccessibility")
-    public void showVideoWindow(Context context,String url, int width, int height, int x, int y) {
+    public void showVideoWindow(Context context, String url, int width, int height, int x, int y) {
 
-        inflater = LayoutInflater.from(context);
-        layout = inflater.inflate(R.layout.dialog_videoview, null);
-        mVideoView = (VideoView) layout.findViewById(R.id.videoview);
-        windowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager windowManager;
+        WindowManager.LayoutParams layoutParams;
+//        if (sys_view != null) {
+//            return;
+//        }
+//        sys_view = new SmallWindowView(context);
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View layout = inflater.inflate(R.layout.dialog_videoview, null);
+        VideoView mVideoView = (VideoView) layout.findViewById(R.id.videoview);
+        windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         int screenWidth = 0, screenHeight = 0;
         if (windowManager != null) {
             screenWidth =x;
@@ -138,7 +145,7 @@ public class WindowController implements View.OnTouchListener {
             layoutParams.x = screenWidth;
             layoutParams.y = screenHeight;
             //将View添加到屏幕上
-            windowManager.addView(sys_view, layoutParams);
+            windowManager.addView(layout, layoutParams);
         }
 
         mVideoView.setVideoPath(url);

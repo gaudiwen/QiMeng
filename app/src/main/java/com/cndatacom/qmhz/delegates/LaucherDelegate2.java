@@ -2,6 +2,7 @@ package com.cndatacom.qmhz.delegates;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.PixelFormat;
 import android.graphics.RectF;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -20,7 +23,6 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.cndatacom.qmhz.R;
-import com.cndatacom.qmhz.adapter.GridHelperAdapter;
 import com.cndatacom.qmhz.adapter.TestAdapter;
 import com.cndatacom.qmhz.bean.LaucherConfigBean;
 import com.cndatacom.qmhz.bean.TestDataBean;
@@ -28,22 +30,26 @@ import com.cndatacom.qmhz.cache.LocalDataManager;
 import com.cndatacom.qmhz.utils.LogUtils;
 import com.cndatacom.qmhz.utils.TimeThread;
 import com.cndatacom.qmhz.utils.ViewUtils;
+import com.cndatacom.qmhz.view.WindowController;
 import com.open.androidtvwidget.bridge.EffectNoDrawBridge;
 import com.open.androidtvwidget.utils.Utils;
+import com.open.androidtvwidget.view.FrameMainLayout;
 import com.open.androidtvwidget.view.MainUpView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * 描述: 描述一下类的作用
  * 邮箱：275634247@qq.com
  * Created by GaudiWen on 2019/5/6 10:25.
  */
-public class LaucherDelegate extends PlaneDelegate {
+public class LaucherDelegate2 extends PlaneDelegate {
 
-   /* @BindView(R.id.recyclerview)
-    RecyclerView recyclerview;*/
+    @BindView(R.id.tv_showtime)
+    TextView tvShowtime;
 
     private List<TestDataBean> list=null;
 
@@ -54,15 +60,16 @@ public class LaucherDelegate extends PlaneDelegate {
     private MainUpView mainUpView1;
     RelativeLayout mRelativeMainLayout;
     private int bgResId;  //根布局背景
-    private RelativeLayout mRootMain;//根布局
+    private ViewGroup mRootMain;//根布局
     private VideoView mVideoView;
     private TextView tvTime; //时间显示
+    private FrameMainLayout frameMainLayout;
 
-    public static LaucherDelegate newInstance() {
+    public static LaucherDelegate2 newInstance() {
 
         Bundle args = new Bundle();
 
-        LaucherDelegate fragment = new LaucherDelegate();
+        LaucherDelegate2 fragment = new LaucherDelegate2();
         fragment.setArguments(args);
         return fragment;
     }
@@ -70,24 +77,32 @@ public class LaucherDelegate extends PlaneDelegate {
     @Override
     protected Object setLayout() {
 
+
         //如果有缓存配置，拿缓存
-        if (LocalDataManager.getInstance().getLaucherConfigBean() != null) {
+        /*if (LocalDataManager.getInstance().getLaucherConfigBean() != null) {
             bgResId = LocalDataManager.getInstance().getLaucherConfigBean().getBgResId();
         } else {
             //如果没有，请求网络
             bgResId = R.color.color_aqua;
             LocalDataManager.getInstance().saveLaucherConfigBean(new LaucherConfigBean(bgResId));
         }
-        return initUI();
-     //   return R.layout.delegate_laucher;
+        return initUI();*/
+        return R.layout.delegate_laucher;
     }
 
     @Override
     protected void initData(Bundle arguments) {
 
+        initUI();
+
         initGridData();
         getDensity();
-        mRootMain.post(new Runnable() {
+        /*mRootMain.post(new Runnable() {
+            @Override
+            public void run() {
+            }
+        });*/
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 initVideoPlayer("http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4");
@@ -195,31 +210,34 @@ public class LaucherDelegate extends PlaneDelegate {
     @SuppressLint("ResourceType")
     public final View initUI() {
 
-        //上边距（dp值）
-        int topMargin = dip2px(_mActivity, 30);
-        //imageMain宽度（dp值）
-        int widthMain = dip2px(_mActivity, 240);
-        //imageMain高度（dp值）
-        int heightMain = dip2px(_mActivity, 120);
-
+        ViewGroup rootMain = (ViewGroup) _mActivity.findViewById(Window.ID_ANDROID_CONTENT);
         //根布局参数
-        RelativeLayout rootMain = ViewUtils.creatRootView(_mActivity, bgResId);
+        // RelativeLayout rootMain = ViewUtils.creatRootView(_mActivity, bgResId);
         mRootMain = rootMain;
-
-        //跑马灯
-        rootMain.addView(ViewUtils.creatTextView(_mActivity, "这是一个跑马灯，需放在跟布局。 这是一个跑马灯，需放在跟布局。 这是一个跑马灯，需放在跟布局。"), ViewUtils.RelativeLayoutParams(_mActivity, 800, ViewGroup.LayoutParams.WRAP_CONTENT, 80, 50));
 
         //RelativeMainLayout
         mRelativeMainLayout = ViewUtils.creatRelativeMainView(_mActivity);
         rootMain.addView(mRelativeMainLayout, ViewUtils.RelativeLayoutParamsWithMatchParent());
 
+        //跑马灯
+        mRelativeMainLayout.addView(ViewUtils.creatTextView(_mActivity, "这是一个跑马灯，需放在跟布局。 这是一个跑马灯，需放在跟布局。 这是一个跑马灯，需放在跟布局。"),
+                ViewUtils.RelativeLayoutParams(_mActivity, 800, ViewGroup.LayoutParams.WRAP_CONTENT, 100, 0));
+
         //mRelativeMainLayout儿子
         mRecyclerview = ViewUtils.creatNormalRecyclerView(_mActivity);
-         mRelativeMainLayout.addView(mRecyclerview,ViewUtils.RelativeLayoutParams(_mActivity,230,230,30,30));
+         mRelativeMainLayout.addView(mRecyclerview,ViewUtils.RelativeLayoutParams(_mActivity,300,300,900, 100));
+
+        //窗口视频
+//        mVideoView=ViewUtils.creatVideoView(_mActivity);
+//        mRelativeMainLayout.addView(mVideoView,ViewUtils.RelativeLayoutParams(_mActivity,600,500,80,450));
+
+         frameMainLayout =ViewUtils.creatFrameMainLayout(_mActivity);
+         frameMainLayout.setId(R.id.framelayout_videoview_id);
+
+        mRelativeMainLayout.addView(frameMainLayout,ViewUtils.RelativeLayoutParams(_mActivity,600,500,80,400));
 
         //imageMain布局参数
         ImageView imageView = ViewUtils.creatImageView(_mActivity, R.mipmap.grid_view_item_test);
-
         //指定焦点获取，需延时回去，否则有可能会失效
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -233,20 +251,13 @@ public class LaucherDelegate extends PlaneDelegate {
         mRelativeMainLayout.addView(ViewUtils.creatImageView(_mActivity, R.mipmap.grid_view_item_test), ViewUtils.RelativeLayoutParams(_mActivity, 300, 300, 420, 100));
         mRelativeMainLayout.addView(ViewUtils.creatImageView(_mActivity, R.mipmap.grid_view_item_test), ViewUtils.RelativeLayoutParams(_mActivity, 300, 300, 590, 100));
 
-        tvTime = ViewUtils.creatNormalTextView(_mActivity, 30);
-        TimeThread timeThread = new TimeThread(tvTime);
-        timeThread.start();//启动线程
         //时间显示
-        mRelativeMainLayout.addView(tvTime, ViewUtils.RelativeLayoutParams(_mActivity, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 800, 30));
+        TimeThread timeThread = new TimeThread(tvShowtime);
+        timeThread.start();//启动线程
 
         //MainUp布局参数
 //        mainUpView1 = ViewUtils.creatMainUpView(_mActivity);
 //        mRootMain.addView(mainUpView1, ViewUtils.RelativeLayoutParamsWithWrapContent());
-
-        //窗口视频
-         mVideoView=ViewUtils.creatVideoView(_mActivity);
-         mRelativeMainLayout.addView(mVideoView,ViewUtils.RelativeLayoutParams(_mActivity,600,600,400,300));
-
 
         return rootMain;
 
@@ -255,6 +266,16 @@ public class LaucherDelegate extends PlaneDelegate {
 
     private void initVideoPlayer(String url) {
 
+//        mVideoView=ViewUtils.creatVideoView(_mActivity);
+//        mRelativeMainLayout.addView(mVideoView,ViewUtils.RelativeLayoutParamsWithMatchParent());
+
+//        loadRootFragment(R.id.framelayout_videoview_id,MainDelegate.newInstance());
+
+//        WindowController.showVideoWindow(_mActivity,"http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4",
+//                600,500,80,450);
+
+       /* mVideoView= getActivity().findViewById(R.id.videoview);
+        mVideoView.setZOrderOnTop(true);
         if (mVideoView != null) {
             mVideoView.setVideoPath(url);
             mVideoView.start();
@@ -272,7 +293,7 @@ public class LaucherDelegate extends PlaneDelegate {
             @Override
             public void onCompletion(MediaPlayer mp) {
             }
-        });
+        });*/
     }
 
     /**

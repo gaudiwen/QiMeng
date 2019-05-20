@@ -16,4 +16,6 @@
     <item name="delegate_container" type="id"/>
     <item name="common_view_pager_item_tag" type="id"/>
     <item name="vp" type="id"/>
+
+    <item name="framelayout_videoview_id" type="id"/>
 </resources>
