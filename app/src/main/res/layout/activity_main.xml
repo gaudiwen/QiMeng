@@ -8,30 +8,6 @@
     android:clipChildren="false"
     android:clipToPadding="false">
 
-    <RelativeLayout
-        android:id="@+id/title_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h_80" >
-
-
-    </RelativeLayout>
-
-<!--    <TextView
-        android:id="@+id/tvMarqueeOne"
-        android:layout_below="@+id/title_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/w_150"
-        android:layout_marginRight="@dimen/w_150"
-        android:layout_marginTop="@dimen/h_30"
-        android:ellipsize="marquee"
-        android:gravity="center_horizontal"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:scrollHorizontally="true"
-        android:singleLine="true"
-        android:text="Always believe thaasfasfja;lsjf;aljf;lasj;lfja;ja;ljs;asdka;ksd
-        ;aksd;lajd;kljakljdklajdklahkldhaklsdhaklhdklast somethinn111111111111111111111111111111"
-        android:textSize="25sp" />-->
 
         <com.cndatacom.qmhz.view.MarqueeTextView
             android:id="@+id/tvMarqueeOne"

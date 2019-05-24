@@ -167,8 +167,8 @@ public class ViewUtils {
     public static MyVideoView creatVideoView(Context context){
 
         MyVideoView videoView = new MyVideoView(context);
-        videoView.setFocusable(true);
-        videoView.setFocusableInTouchMode(true);
+        videoView.setFocusable(false);
+        videoView.setFocusableInTouchMode(false);
         return videoView;
     }
 
@@ -177,8 +177,10 @@ public class ViewUtils {
         FrameMainLayout framemainlayout = new FrameMainLayout(context);
         framemainlayout.setId(R.id.framelayout_videoview_id);
         framemainlayout.setBackgroundColor(R.color.color_black);
-        framemainlayout.setFocusable(false);
-        framemainlayout.setFocusableInTouchMode(false);
+        framemainlayout.setFocusable(true);
+        framemainlayout.setFocusableInTouchMode(true);
+        framemainlayout.setClipChildren(false);
+        framemainlayout.setClipToPadding(false);
         return framemainlayout;
     }
 

@@ -27,6 +27,7 @@ import com.cndatacom.qmhz.utils.LogUtils;
 import com.cndatacom.qmhz.utils.TimeThread;
 import com.cndatacom.qmhz.utils.ViewUtils;
 import com.cndatacom.qmhz.view.DisplayUtil;
+import com.cndatacom.qmhz.view.MyVideoView;
 import com.cndatacom.qmhz.view.WindowController;
 import com.open.androidtvwidget.utils.Utils;
 import com.open.androidtvwidget.view.FrameMainLayout;
@@ -51,7 +52,7 @@ public class LaucherActivity extends AppCompatActivity {
     RelativeLayout mRelativeMainLayout;
     private int bgResId;  //根布局背景
     private ViewGroup mRootMain;//根布局
-    private VideoView mVideoView;
+    private MyVideoView mVideoView;
     private TextView tvTime; //时间显示
     private FrameMainLayout frameMainLayout;
 
@@ -74,7 +75,7 @@ public class LaucherActivity extends AppCompatActivity {
         mRootMain.post(new Runnable() {
             @Override
             public void run() {
-                initVideoPlayer("http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4");
+              //  initVideoPlayer("http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4");
             }
         });
     }
@@ -91,10 +92,6 @@ public class LaucherActivity extends AppCompatActivity {
         //RelativeMainLayout
         mRelativeMainLayout = ViewUtils.creatRelativeMainView(this);
         rootMain.addView(mRelativeMainLayout, ViewUtils.RelativeLayoutParamsWithMatchParent());
-
-        //跑马灯
-        mRelativeMainLayout.addView(ViewUtils.creatTextView(this, "这是一个跑马灯，需放在跟布局。 这是一个跑马灯，需放在跟布局。 这是一个跑马灯，需放在跟布局。"),
-                ViewUtils.RelativeLayoutParams(this, 800, ViewGroup.LayoutParams.WRAP_CONTENT, 100, 0));
 
         //mRelativeMainLayout儿子
         mRecyclerview = ViewUtils.creatNormalRecyclerView(this);
@@ -115,6 +112,11 @@ public class LaucherActivity extends AppCompatActivity {
         mRelativeMainLayout.addView(ViewUtils.creatImageView(this, R.mipmap.grid_view_item_test), ViewUtils.RelativeLayoutParams(this, 300, 300, 250, 100));
         mRelativeMainLayout.addView(ViewUtils.creatImageView(this, R.mipmap.grid_view_item_test), ViewUtils.RelativeLayoutParams(this, 300, 300, 420, 100));
         mRelativeMainLayout.addView(ViewUtils.creatImageView(this, R.mipmap.grid_view_item_test), ViewUtils.RelativeLayoutParams(this, 300, 300, 590, 100));
+
+
+        //跑马灯
+        mRelativeMainLayout.addView(ViewUtils.creatTextView(this, "这是一个跑马灯，需放在跟布局。 这是一个跑马灯，需放在跟布局。 这是一个跑马灯，需放在跟布局。"),
+                ViewUtils.RelativeLayoutParams(this, 800, ViewGroup.LayoutParams.WRAP_CONTENT, 100, 0));
 
         //时间显示
         TimeThread timeThread = new TimeThread(tvShowtime);
@@ -210,6 +212,17 @@ public class LaucherActivity extends AppCompatActivity {
                     newFocus.bringToFront(); // 防止放大的view被压在下面. (建议使用MainLayout)
                 float scale = 1.2f;
                 mainUpView1.setFocusView(newFocus, oldFocus, scale);
+
+                if(newFocus==frameMainLayout){
+                    if(mVideoView!=null){
+                        mVideoView.setVideoView();
+                    }
+                }
+                if(oldFocus==frameMainLayout){
+                    if(mVideoView!=null){
+                        mVideoView.resetVideoView();
+                    }
+                }
 
                 mOldFocus = newFocus; // 4.3以下需要自己保存.
                 // 测试是否让边框绘制在下面，还是上面. (建议不要使用此函数)

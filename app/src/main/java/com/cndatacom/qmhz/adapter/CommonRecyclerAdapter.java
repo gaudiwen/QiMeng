@@ -24,6 +24,7 @@ public abstract class CommonRecyclerAdapter<T> extends RecyclerView.Adapter<Recy
     private OnItemLongClickListener longClickListener;//长按监听器
     private RecyclerView recyclerView;
 
+
     //在RecyclerView提供数据的时候调用
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -89,6 +90,7 @@ public abstract class CommonRecyclerAdapter<T> extends RecyclerView.Adapter<Recy
         });
         convert(holder, list.get(position), position);
     }
+
 
     @Override
     public int getItemCount() {

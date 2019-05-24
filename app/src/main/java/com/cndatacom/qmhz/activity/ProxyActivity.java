@@ -25,7 +25,9 @@ public abstract class ProxyActivity extends SupportActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        initContainer(savedInstanceState);
+        if(setRootDelegate()!=null){
+            initContainer(savedInstanceState);
+        }
     }
 
     private void initContainer(Bundle savedInstanceState) {
@@ -46,20 +48,4 @@ public abstract class ProxyActivity extends SupportActivity {
 
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        if(getTopFragment() instanceof MainDelegate){
-            //ToastUtil.getInstance().showNewShort("MainDelegate");
-            ((MainDelegate) getTopFragment()).onKeyDown(keyCode,event);
-            //return true;
-        }
-        if(getTopFragment() instanceof LaucherDelegate){
-            //ToastUtil.getInstance().showNewShort("LaucherDelegate");
-            ((LaucherDelegate) getTopFragment()).onKeyDown(keyCode,event);
-            //return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
-    }
 }

@@ -37,6 +37,7 @@
         </activity>
 
         <activity android:name=".activity.LaucherActivity"/>
+        <activity android:name=".activity.SettingActivity"/>
     </application>
 
 </manifest>

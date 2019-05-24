@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/framelayout_root"
+    android:layout_width="100dp"
+    android:layout_height="300dp"
+    android:layout_margin="10dp"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/grid_view_item_test" >
+    </ImageView>
+
+
+    <FrameLayout
+        android:id="@+id/framelayout_setting"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e02F4F4F"
+        >
+        <com.open.androidtvwidget.view.LinearMainLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:gravity="center"
+                android:text="预览"
+                android:textAlignment="center"
+                android:textColor="@color/color_aqua"
+                android:textSize="20sp"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:nextFocusDown="@id/textView2"
+                android:nextFocusLeft="@+id/framelayout_root"
+                android:nextFocusRight="@+id/framelayout_root"
+
+                />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:gravity="center"
+                android:text="使用"
+                android:textAlignment="center"
+                android:textColor="@color/color_darkblue"
+                android:textSize="20sp"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:nextFocusDown="@id/textView3"
+                android:nextFocusUp="@id/textView1"
+                android:nextFocusLeft="@+id/framelayout_root"
+                android:nextFocusRight="@+id/framelayout_root"
+                />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:gravity="center"
+                android:text="收藏"
+                android:textAlignment="center"
+                android:textColor="#FF0000"
+                android:textSize="20sp"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:nextFocusUp="@id/textView2"
+                android:nextFocusLeft="@+id/framelayout_root"
+                android:nextFocusRight="@+id/framelayout_root"
+                />
+
+        </com.open.androidtvwidget.view.LinearMainLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

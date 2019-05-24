@@ -5,12 +5,11 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:background="@color/color_chocolate">
+    android:background="@mipmap/ic_tv_bg">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h_80"
-        android:background="@color/color_royalblue">
+        android:layout_height="@dimen/h_80">
 
         <TextView
             android:id="@+id/tv_showtime"
@@ -26,8 +25,8 @@
         <ImageView
             android:layout_toLeftOf="@id/tv_showtime"
             android:layout_marginRight="@dimen/h_15"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/h_53"
+            android:layout_width="@dimen/w_55"
+            android:layout_height="@dimen/h_50"
             android:layout_centerVertical="true"
             android:background="@mipmap/ic_wifi">
         </ImageView>

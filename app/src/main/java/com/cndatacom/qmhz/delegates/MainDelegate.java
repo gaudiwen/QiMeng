@@ -3,7 +3,6 @@ package com.cndatacom.qmhz.delegates;
 import android.content.Intent;
 import android.graphics.RectF;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,20 +12,20 @@ import android.widget.FrameLayout;
 
 import com.cndatacom.qmhz.R;
 import com.cndatacom.qmhz.activity.LaucherActivity;
+import com.cndatacom.qmhz.activity.SettingActivity;
 import com.cndatacom.qmhz.bean.GoodsTypeBean;
 import com.cndatacom.qmhz.bean.LoginBean;
 import com.cndatacom.qmhz.network.retrofit.HttpManager;
 import com.cndatacom.qmhz.network.rxjava.BaseListResponse;
 import com.cndatacom.qmhz.network.rxjava.observable.ResultTransformer;
 import com.cndatacom.qmhz.network.rxjava.observer.BaseObserver;
-import com.cndatacom.qmhz.utils.LogUtils;
-import com.cndatacom.qmhz.utils.ToastUtil;
 import com.cndatacom.qmhz.view.MarqueeTextView;
 import com.open.androidtvwidget.bridge.EffectNoDrawBridge;
 import com.open.androidtvwidget.bridge.OpenEffectBridge;
 import com.open.androidtvwidget.utils.Utils;
 import com.open.androidtvwidget.view.FrameMainLayout;
 import com.open.androidtvwidget.view.MainUpView;
+import com.open.androidtvwidget.view.ReflectItemView;
 
 import java.util.HashMap;
 
@@ -36,7 +35,6 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * 描述: 描述一下类的作用
@@ -55,6 +53,8 @@ public class MainDelegate extends PlaneDelegate {
     MarqueeTextView tvMarqueeOne;
     @BindView(R.id.gridview_lay)
     FrameLayout gridviewLay;
+    @BindView(R.id.viewpager_lay)
+    ReflectItemView viewpagerLay;
 
     private HashMap<String, Object> loginMap = new HashMap<>();
 
@@ -158,21 +158,27 @@ public class MainDelegate extends PlaneDelegate {
     }
 
 
-    @OnClick(R.id.gridview_lay)
-    public void onViewClicked() {
-        //start(LaucherDelegate2.newInstance(), SupportFragment.SINGLETOP);
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), LaucherActivity.class);
-        startActivity(intent);
-    }
+    @OnClick({R.id.gridview_lay,R.id.viewpager_lay})
+    public void onViewClicked(View view) {
 
+        switch (view.getId()) {
+            case R.id.gridview_lay:
 
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch (keyCode) {
-            case 8:
-            case 9:
+                //start(LaucherDelegate2.newInstance(), SupportFragment.SINGLETOP);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), LaucherActivity.class);
+                startActivity(intent);
+
+                break;
+            case R.id.viewpager_lay:
+                Intent intent2 = new Intent();
+                intent2.setClass(getActivity(), SettingActivity.class);
+                startActivity(intent2);
+                break;
+//            case R.id.ll_product_qixian:
+//                System.out.print("我是点击事件3");
         }
-        return false;
     }
+
 
 }

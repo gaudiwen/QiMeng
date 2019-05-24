@@ -13,6 +13,7 @@ import com.open.androidtvwidget.leanback.mode.OpenPresenter;
 public class GeneralAdapter extends RecyclerView.Adapter {
 
     private OpenPresenter mPresenter;
+    public int selectedPosition = -1;
 
     public GeneralAdapter(OpenPresenter presenter) {
         this.mPresenter = presenter;
