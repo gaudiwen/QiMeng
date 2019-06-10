@@ -32,7 +32,6 @@ public class SettingDelegate extends  PlaneDelegate{
     public static SettingDelegate newInstance() {
 
         Bundle args = new Bundle();
-
         SettingDelegate fragment = new SettingDelegate();
         fragment.setArguments(args);
         return fragment;
@@ -46,6 +45,7 @@ public class SettingDelegate extends  PlaneDelegate{
     protected void initData(Bundle arguments) {
 
     }
+
 
     @Override
     protected void init() {
@@ -70,8 +70,7 @@ public class SettingDelegate extends  PlaneDelegate{
         // 初始化左侧菜单.
         initLeftMenu();
 
-        loadRootFragment(R.id.framelayout, BackgroundDelegate.newInstance());
-//        replaceFragment(BackgroundDelegate.newInstance(),false);
+       loadRootFragment(R.id.framelayout, BackgroundDelegate.newInstance(),false,false);
     }
 
     private void initLeftMenu() {
@@ -121,15 +120,9 @@ public class SettingDelegate extends  PlaneDelegate{
         switch (pos) {
             case 0:
                 switchContentFragment(BackgroundDelegate.newInstance());
-
-                //loadRootFragment(R.id.framelayout,MainDelegate.newInstance());
-                //replaceFragment(MainDelegate.newInstance(),false);
                 break;
             case 1:
                 switchContentFragment(MainDelegate.newInstance());
-
-                // loadRootFragment(R.id.framelayout,BackgroundDelegate.newInstance());
-                //replaceFragment(BackgroundDelegate.newInstance(),false);
                 break;
             case 2:
                 break;
@@ -148,16 +141,12 @@ public class SettingDelegate extends  PlaneDelegate{
      * @param
      */
     public void switchContentFragment(SupportFragment fragment) {
-      //  BackgroundDelegate BackgroundFragment = BackgroundDelegate.newInstance();
-        SupportFragment contentFragment = findChildFragment(BackgroundDelegate.class);
-        if (contentFragment != null) {
-            contentFragment.replaceFragment(fragment, false);
-        }
+
+        SupportFragment topFragment = (SupportFragment) getTopChildFragment();
+   //     SupportFragment contentFragment = findChildFragment(topFragment);
+//        if (contentFragment != null) {
+//        }
+        topFragment.replaceFragment(fragment, false);
     }
 
-/*    @Override
-    public void onBackPressedSupport() {
-        super.onBackPressedSupport();
-        finish();
-    }*/
 }
