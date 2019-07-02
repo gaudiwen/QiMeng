@@ -206,9 +206,6 @@ public class LaucherDelegate extends PlaneDelegate {
         RelativeLayout rootMain = ViewUtils.creatRootView(_mActivity, bgResId);
         mRootMain = rootMain;
 
-        //跑马灯
-        rootMain.addView(ViewUtils.creatTextView(_mActivity, "这是一个跑马灯，需放在跟布局。 这是一个跑马灯，需放在跟布局。 这是一个跑马灯，需放在跟布局。"), ViewUtils.RelativeLayoutParams(_mActivity, 800, ViewGroup.LayoutParams.WRAP_CONTENT, 80, 50));
-
         //RelativeMainLayout
         mRelativeMainLayout = ViewUtils.creatRelativeMainView(_mActivity);
         rootMain.addView(mRelativeMainLayout, ViewUtils.RelativeLayoutParamsWithMatchParent());

@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import com.cndatacom.qmhz.R;
 import com.cndatacom.qmhz.activity.LaucherActivity;
 import com.cndatacom.qmhz.activity.SettingActivity;
+import com.cndatacom.qmhz.activity.ViewPagerShowActivity;
 import com.cndatacom.qmhz.bean.GoodsTypeBean;
 import com.cndatacom.qmhz.bean.LoginBean;
 import com.cndatacom.qmhz.network.retrofit.HttpManager;
@@ -163,20 +164,26 @@ public class MainDelegate extends PlaneDelegate {
 
         switch (view.getId()) {
             case R.id.gridview_lay:
-
                 //start(LaucherDelegate2.newInstance(), SupportFragment.SINGLETOP);
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), LaucherActivity.class);
                 startActivity(intent);
-
                 break;
             case R.id.viewpager_lay:
-                Intent intent2 = new Intent();
-                intent2.setClass(getActivity(), SettingActivity.class);
-                startActivity(intent2);
+//                Intent intent2 = new Intent();
+//                intent2.setClass(getActivity(), SettingActivity.class);
+//                startActivity(intent2);
+
+                Intent intent3 = new Intent();
+                intent3.setClass(getActivity(), ViewPagerShowActivity.class);
+                startActivity(intent3);
+
                 break;
-//            case R.id.ll_product_qixian:
-//                System.out.print("我是点击事件3");
+            case R.id.effect_rlay:
+//                Intent intent3 = new Intent();
+//                intent3.setClass(getActivity(), ViewPagerShowActivity.class);
+//                startActivity(intent3);
+                break;
         }
     }
 

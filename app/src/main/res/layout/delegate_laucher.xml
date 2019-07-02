@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:background="@mipmap/ic_tv_bg">
+    android:background="@mipmap/bg_test">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -32,5 +32,6 @@
         </ImageView>
 
     </RelativeLayout>
+
 
 </RelativeLayout>

@@ -38,6 +38,7 @@
 
         <activity android:name=".activity.LaucherActivity"/>
         <activity android:name=".activity.SettingActivity"/>
+        <activity android:name=".activity.ViewPagerShowActivity"/>
     </application>
 
 </manifest>

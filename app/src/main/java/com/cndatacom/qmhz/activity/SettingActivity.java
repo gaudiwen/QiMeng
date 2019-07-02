@@ -18,7 +18,6 @@ import com.open.androidtvwidget.leanback.recycle.RecyclerViewTV;
 import com.open.androidtvwidget.view.MainUpView;
 
 /**
-  * @description setSelectedItemAtCentered 设置一直在中间. (如果设置 false，那么请使用setSelectedItemOffset来设置相差的边距)
   * @date:  2019/05/22
   * @author: GaudiWen
   */
@@ -26,7 +25,7 @@ public class SettingActivity extends ProxyActivity {
 
      @Override
      public PlaneDelegate setRootDelegate() {
-         return SettingDelegate.newInstance();
+        return SettingDelegate.newInstance();
      }
 
      @Override
