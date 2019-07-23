@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/vp_main_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/main_bg"
+    android:clipChildren="false"
+    android:clipToPadding="false" >
+
+    <RelativeLayout
+        android:id="@+id/layout_announce"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h_90">
+
+        <com.cndatacom.qmhz.view.ScrollingTextView
+            android:layout_width="@dimen/w_200"
+            android:layout_height="match_parent"
+            android:text="这里放置一个公告栏,这里放置一个公告栏"
+            android:textSize="25sp"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/h_90"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            />
+    </RelativeLayout>
+
+    <com.open.androidtvwidget.view.OpenTabHost
+        android:id="@+id/openTabHost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/layout_announce"
+        />
+    <!--<ImageView
+        android:background="@mipmap/ic_search"
+        android:layout_width="@dimen/h_40"
+        android:layout_height="@dimen/w_40"
+        android:layout_below="@+id/layout_announce"
+        android:layout_toLeftOf="@+id/openTabHost"
+        />-->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_marginTop="@dimen/h_175"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="visible" />
+
+    <com.open.androidtvwidget.view.MainUpView
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:upImageRes="@drawable/test_rectangle" />
+
+</RelativeLayout>

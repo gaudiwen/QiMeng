@@ -127,7 +127,11 @@ public class OpenTabHost extends TabHost {
 	public View getTitleViewIdAt(int index) {
 		return this.mCacheView.get(index).findViewById(this.mAdapter.getTitleWidgetID(index));
 	}
-	
+
+	public View getImageViewIdAt(int index) {
+		return this.mCacheView.get(index).findViewById(this.mAdapter.getTitleWidgetID(index));
+	}
+
 	public interface OnTabSelectListener {
 		public void onTabSelect(OpenTabHost openTabHost, View titleWidget, int postion);
 	}

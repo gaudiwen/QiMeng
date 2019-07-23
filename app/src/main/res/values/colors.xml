@@ -143,4 +143,6 @@
     <color name="color_darkblue">#00008B</color><!--暗蓝色 -->
     <color name="color_navy">#000080</color><!--海军色 -->
     <color name="color_black">#000000</color><!--黑色 -->
+    <color name="white_50">#7fffffff</color>
+    <color name="transparent">#00000000</color><!--透明色 -->
 </resources>

@@ -1,49 +1,40 @@
 package com.cndatacom.qmhz.activity;
 
-import android.content.Context;
 import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.cndatacom.qmhz.R;
 import com.cndatacom.qmhz.adapter.AnnounceAdapter;
 import com.cndatacom.qmhz.adapter.TestAdapter;
 import com.cndatacom.qmhz.adapter.ViewPagerAdapter;
 import com.cndatacom.qmhz.bean.AnnounceBean;
-import com.cndatacom.qmhz.bean.LaucherDataBean;
 import com.cndatacom.qmhz.bean.LaucherDataBean2;
 import com.cndatacom.qmhz.bean.TestDataBean;
 import com.cndatacom.qmhz.utils.LogUtils;
 import com.cndatacom.qmhz.utils.TimeThread;
 import com.cndatacom.qmhz.utils.ViewUtils;
-import com.cndatacom.qmhz.view.DisplayUtil;
 import com.cndatacom.qmhz.view.MyVideoView;
-import com.cndatacom.qmhz.view.WindowController;
 import com.open.androidtvwidget.leanback.recycle.RecyclerViewTV;
 import com.open.androidtvwidget.utils.Utils;
 import com.open.androidtvwidget.view.FrameMainLayout;
 import com.open.androidtvwidget.view.MainUpView;
-import com.open.androidtvwidget.view.ViewPagerTV;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +43,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
-public class LaucherActivity extends AppCompatActivity {
+public class LaucherActivity2 extends AppCompatActivity {
 
     TextView tvShowtime;
 

@@ -1,0 +1,169 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content11"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <com.open.androidtvwidget.view.SmoothHorizontalScrollView
+        android:id="@+id/test_hscroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <com.open.androidtvwidget.view.FrameMainLayout
+            android:id="@+id/page1_main_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="80dp">
+
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/page1_item1"
+                android:layout_width="@dimen/w_300"
+                android:layout_height="@dimen/h_625"
+                android:layout_marginLeft="@dimen/w_90"
+                android:layout_marginTop="@dimen/h_90"
+                android:clickable="true"
+                android:focusable="true"
+                android:nextFocusUp="@+id/title_bar1"
+                app:isShape="true">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@mipmap/ic_weather"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/test_top_iv"
+                        android:layout_width="@dimen/w_220"
+                        android:layout_height="@dimen/h_350"
+                        android:scaleType="fitXY" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="31dp"
+                        android:layout_gravity="bottom"
+                        android:background="#50000000"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="页面page1"
+                        android:textColor="#FF0000" />
+                </FrameLayout>
+            </com.open.androidtvwidget.view.ReflectItemView>
+
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/page1_item2"
+                android:layout_width="@dimen/w_300"
+                android:layout_height="@dimen/h_625"
+                android:layout_marginLeft="@dimen/w_410"
+                android:layout_marginTop="@dimen/h_90"
+                android:clickable="true"
+                android:focusable="true"
+                android:nextFocusUp="@+id/title_bar1"
+                app:isReflect="true"
+                app:isShape="true">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="false"
+                        android:scaleType="fitXY"
+                        android:background="@mipmap/ic_weather" />
+
+                    <!--<com.open.androidtvwidget.view.LabelView xmlns:lv="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        lv:lv_background_color="#3F9FE0"
+                        lv:lv_fill_triangle="true"
+                        lv:lv_gravity="TOP_RIGHT"
+                        lv:lv_text="热门"
+                        lv:lv_text_size="18sp" />-->
+                </FrameLayout>
+            </com.open.androidtvwidget.view.ReflectItemView>
+
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/page1_item5"
+                android:layout_width="@dimen/w_565"
+                android:layout_height="@dimen/h_300"
+                android:layout_marginLeft="@dimen/w_730"
+                android:layout_marginTop="@dimen/h_90"
+                android:clickable="true"
+                android:focusable="true"
+                android:nextFocusUp="@+id/title_bar1"
+                app:isShape="true">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:background="@mipmap/ic_weather"
+                        />
+                </FrameLayout>
+            </com.open.androidtvwidget.view.ReflectItemView>
+
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/page1_item6"
+                android:layout_width="@dimen/w_280"
+                android:layout_height="@dimen/h_300"
+                android:layout_marginLeft="@dimen/w_730"
+                android:layout_marginTop="@dimen/h_400"
+                android:clickable="true"
+                android:focusable="true"
+                app:isShape="true">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:background="@mipmap/ic_tv_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="false"
+                        android:scaleType="fitXY" />
+                </FrameLayout>
+            </com.open.androidtvwidget.view.ReflectItemView>
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/page1_item7"
+                android:layout_width="@dimen/w_280"
+                android:layout_height="@dimen/h_300"
+                android:layout_marginLeft="@dimen/w_1025"
+                android:layout_marginTop="@dimen/h_400"
+                android:clickable="true"
+                android:focusable="true"
+                app:isShape="true">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:background="@mipmap/ic_weather"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="false"
+                        android:scaleType="fitXY" />
+                </FrameLayout>
+            </com.open.androidtvwidget.view.ReflectItemView>
+        </com.open.androidtvwidget.view.FrameMainLayout>
+    </com.open.androidtvwidget.view.SmoothHorizontalScrollView>
+
+</RelativeLayout>

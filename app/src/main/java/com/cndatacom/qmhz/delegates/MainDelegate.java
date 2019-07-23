@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import com.cndatacom.qmhz.R;
 import com.cndatacom.qmhz.activity.LaucherActivity;
 import com.cndatacom.qmhz.activity.SettingActivity;
+import com.cndatacom.qmhz.activity.ViewPagerIndexActivity;
 import com.cndatacom.qmhz.activity.ViewPagerShowActivity;
 import com.cndatacom.qmhz.bean.GoodsTypeBean;
 import com.cndatacom.qmhz.bean.LoginBean;
@@ -20,6 +21,8 @@ import com.cndatacom.qmhz.network.retrofit.HttpManager;
 import com.cndatacom.qmhz.network.rxjava.BaseListResponse;
 import com.cndatacom.qmhz.network.rxjava.observable.ResultTransformer;
 import com.cndatacom.qmhz.network.rxjava.observer.BaseObserver;
+import com.cndatacom.qmhz.utils.LogUtils;
+import com.cndatacom.qmhz.utils.NetWorkUtil;
 import com.cndatacom.qmhz.view.MarqueeTextView;
 import com.open.androidtvwidget.bridge.EffectNoDrawBridge;
 import com.open.androidtvwidget.bridge.OpenEffectBridge;
@@ -75,7 +78,6 @@ public class MainDelegate extends PlaneDelegate {
 
     @Override
     protected void initData(Bundle arguments) {
-
     }
 
     @Override
@@ -159,7 +161,7 @@ public class MainDelegate extends PlaneDelegate {
     }
 
 
-    @OnClick({R.id.gridview_lay,R.id.viewpager_lay})
+    @OnClick({R.id.gridview_lay,R.id.viewpager_lay,R.id.listview_lay})
     public void onViewClicked(View view) {
 
         switch (view.getId()) {
@@ -170,19 +172,18 @@ public class MainDelegate extends PlaneDelegate {
                 startActivity(intent);
                 break;
             case R.id.viewpager_lay:
-//                Intent intent2 = new Intent();
-//                intent2.setClass(getActivity(), SettingActivity.class);
-//                startActivity(intent2);
-
-                Intent intent3 = new Intent();
-                intent3.setClass(getActivity(), ViewPagerShowActivity.class);
-                startActivity(intent3);
-
-                break;
-            case R.id.effect_rlay:
+                Intent intent2 = new Intent();
+                intent2.setClass(getActivity(), SettingActivity.class);
+                startActivity(intent2);
 //                Intent intent3 = new Intent();
 //                intent3.setClass(getActivity(), ViewPagerShowActivity.class);
 //                startActivity(intent3);
+
+                break;
+            case R.id.listview_lay:
+                Intent intent3 = new Intent();
+                intent3.setClass(getActivity(), ViewPagerIndexActivity.class);
+                startActivity(intent3);
                 break;
         }
     }
